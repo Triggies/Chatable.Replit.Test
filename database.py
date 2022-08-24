@@ -89,7 +89,7 @@ def __validate_password(username, password):
 def login(credentials):
 	username, password = credentials["username"], credentials["password"]
 
-	if not __user_exists(username): return [False, UDNE]
+	if not __user_exists(username): return error(UDNE)
 	if not __validate_password(username, password):
 		return error(IUP)
 	
@@ -101,7 +101,7 @@ def signout():
 
 def delete_account(username, password):
 	if not __validate_password(username, password):
-		return [False, IUP]
+		return error(IUP)
 
 	del db["users"][username]
 	del db["messages"][username]
@@ -116,9 +116,9 @@ def validate_auth(auth: dict) -> list:
 	username, cookie = auth['username'], auth['cookie']
 	
 	if not __user_exists(username): 
-		return [False, UDNE]
+		return error(UDNE)
 
 	if not db['users'][username]['cookie'] == cookie:
-		return [False, IUC]
+		return error(IUC)
 
 	return success
