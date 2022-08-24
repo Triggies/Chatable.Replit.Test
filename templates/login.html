@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<form id="login-form" action="/accounts/log-in/" method="POST">
+			<input id="username-input" type="text" name="username"/>
+			<input id="password-input" type="password" name="password"/>
+			<p id="err-msg">{{ error_text }}</p>
+			<br>
+			<button id="login-btn">Log In</button>
+		</form>
+
+		<script>
+			document.getElementById("login-btn").addEventListener("onclick", () => {
+				document.getElementById("login-form").submit()
+			})
+		</script>
+
+		<style>
+			* {
+				box-sizing: border-box;
+				padding: 0;
+				margin: 0;
+			}
+
+			html, body {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+			}
+
+			#login-form {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+			}
+
+			#login-form #username-input,
+			#login-form #password-input {
+				width: 300px;
+				height: 30px;
+				outline: 0;
+				border: 1px grey solid;
+
+				margin: 5px;
+			}
+
+			#login-form #login-btn {
+				width: 60px;
+				height: 25px;
+				background: none;
+				border: solid black 2px;
+			}
+		</style>
+	</body>
+</html>
