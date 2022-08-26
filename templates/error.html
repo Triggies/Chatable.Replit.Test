@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p style="font-size: 50px;"><strong style="font-weight: bolder !important;">Error {{ no }}:</strong> {{ msg }}!</p>
+		<p id="num" style="font-size: 20px;">Redirecting in 5...</p>
+		<script>
+			$(window).on("load", () => {
+				var count = 5
+	
+				let timer = setInterval(() => {
+					count -= 1
+					$("#num").text(`Redirecting in ${count}...`)
+	
+					if (count < 1) {
+						window.location.href = "/"
+						clearInterval(timer)
+					}
+				}, 1000)	
+			})
+		</script>
+
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			html, body {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</body>
+</html>
